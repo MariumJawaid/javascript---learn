@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Card</title>
+  <style>
+     /* Center everything */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+    }
+
+    /* Card styling */
+    .card {
+      width: 300px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      padding: 24px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Avatar */
+    .card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 16px;
+      border: 4px solid #74ebd5;
+    }
+
+    /* Username */
+    .card h1 {
+      font-size: 22px;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    /* Followers text */
+    .card h3 {
+      font-size: 16px;
+      color: #666;
+      margin: 8px 0 0 0;
+    }
+  </style>
+</head>
+<body>
+   <button id="button"> Connect </button>
+<script>
+
+  document.getElementById("button").addEventListener('click',function(e){
+
+    const button = e.target;   // reference to the button
+    button.style.display = "none"; // hide the button after click
+    const requestURL = 'https://api.github.com/users/mariumjawaid';
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestURL);
+
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+        const data = JSON.parse(this.responseText);
+        console.log(data);
+
+        // Create card
+        const card = document.createElement('div');
+        card.classList.add("card");
+
+        const img = document.createElement('img');
+        img.src = data.avatar_url;
+        card.appendChild(img);
+
+        const title = document.createElement('h1');
+        title.innerText = data.login;
+        card.appendChild(title);
+
+        const para = document.createElement('h3');
+        para.innerText = "Followers: " + data.followers;
+        card.appendChild(para);
+
+        document.body.appendChild(card);
+        }
+    }
+    xhr.send();
+
+    })  
+  
+</script>
+
+</body>
+</html>
