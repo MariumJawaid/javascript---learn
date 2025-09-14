@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: blueviolet; text-align: center;">
+    <div class="container">
+        <h1>BMI CALCULATOR</h1>
+        <form >
+            <p><label > Height in cm </label>
+                <input type="text" id="height">
+            </p>
+            <p><label > Weight in kg </label>
+            <input type="text" id="weight">
+             </p>
+             <button>Calculate</button>
+             <div id="result" style=" background-color: aquamarine; "></div>
+             <h3> BMI WEIGHT GUIDE</h3>
+             <p style=" font-weight: bolder; font-size: medium ;">Below 18.5 → Underweight 🥗 <br>
+
+                18.5 – 24.9 → Healthy weight ✅ <br>
+
+                25 – 29.9 → Overweight ⚠️ <br>
+
+                30 or above → Obese</p>
+
+        </form>
+    </div>
+</body>
+<script>
+    const form = document.querySelector('form')
+
+    form.addEventListener('submit' , function(e){
+        e.preventDefault()
+        const height = parseInt( document.querySelector('#height').value)
+        const weight = parseInt( document.querySelector('#weight').value)
+        const results = document.querySelector('#result')
+        if(height === '' || height < 0 || isNaN(height)){
+            results.innerHTML = `Please enter valid height ${height}`
+        } else if(weight === '' || weight < 0 || isNaN(weight)){
+            results.innerHTML = `Please enter valid weight ${weight}`
+        }
+        else {
+            const bmi = (weight /((height*height)/10000)).toFixed(2)
+         
+            if(bmi<18.5){
+                 results.innerHTML = `You are underweight and your BMI is ${bmi}`
+
+            }
+            else if(bmi >18.5 && bmi < 24.9){
+                 results.innerHTML = `You are healthy and your BMI is ${bmi}`
+
+            }
+            else if(bmi >25 && bmi < 29.9){
+                 results.innerHTML = `You are overweight and your BMI is ${bmi}`
+
+            }
+            else{
+                results.innerHTML = `You are obese and your BMI is ${bmi}`
+            }
+
+        }
+    })
+</script>
+</html>
