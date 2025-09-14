@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class = " parent">
+        <li>js</li>
+    </ul>
+</body>
+<script>
+    //adding element
+    function addLang(lang){
+    const li = document.createElement('li')
+    li.innerText = `${lang}`
+    document.querySelector('.parent').appendChild(li)
+    }
+    addLang("odoo")
+    addLang("golang")
+    addLang("java")
+
+    function addOptiLang(lang){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(lang))
+        document.querySelector('.parent').appendChild(li)
+
+    }
+    addOptiLang("ruby on rails")
+
+    //editing element way 1 
+
+    const ele = document.querySelector('li:nth-child(2)')   
+    ele.innerHTML = "C sharp"
+
+    //editing element way 2
+
+    const newele = document.createElement('li')
+    newele.textContent = "mojo"
+    ele.replaceWith(newele)
+    
+   //editing element way 3
+    const ele1 = document.querySelector('li:nth-child(2)')   
+    ele1.outerHTML = '<li>typescript</li>'
+
+    //removing element 
+     const ele2 = document.querySelector('li:last-Child')   
+     ele2.remove()
+
+
+
+</script>
+</html>
