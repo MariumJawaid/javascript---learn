@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UL with Images and Google Link</title>
+</head>
+<body>
+  <h2>List of Images and a Link</h2>
+
+  <ul id="images">
+    <li id="img1">
+      <img src="https://picsum.photos/200/150?random=1" alt="Random Image 1">
+    </li>
+    <li id="img2">
+      <img src="https://picsum.photos/200/150?random=2" alt="Random Image 2" >
+    </li>
+    <li id="img3">
+      <img src="https://picsum.photos/200/150?random=3" alt="Random Image 3">
+    </li>
+    
+  </ul>
+  <ul>
+    <li id="google-link">
+      <a href="https://www.google.com" target="_blank">Go to Google</a>
+    </li>
+  </ul>
+
+  
+
+</body>
+<script>
+  //Topics to learn in events
+  /*
+  type
+  timestamp
+  defaultPrevented
+  target
+  toElement
+  srcElement
+  currentTarget
+  clientX
+  clientY
+  screenX
+  screeny
+  altkey
+  ctrlkey
+  shiftkey
+  keycode
+  
+  */
+ document.querySelector('#images').addEventListener('click',function(e){
+  console.log(e.target.tagName)
+  
+if(e.target.tagName === 'IMG' ){
+  const target = e.target.parentNode
+  target.remove()
+
+}
+  
+ })
+</script>
+</html>
+

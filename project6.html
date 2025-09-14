@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Center Example</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;               
+      display: flex;               
+      justify-content: center;     
+      align-items: center;         
+    }
+
+    #insert {
+      text-align: center;        
+      font-size: 1.2rem;
+    }
+
+    table {
+      border-collapse: collapse;   /* cleaner borders */
+      margin: auto;
+      min-width: 300px;
+    }
+
+    th, td {
+      border: 2px solid black;     /* add border */
+      padding: 10px 15px;
+    }
+
+    th {
+      background: #f4f4f4;         /* light gray header */
+    }
+  </style>
+</head>
+<body>
+  <div id="insert">
+    <p>Press a key and see the magic !!!!!!!!!!!</p>
+  </div>
+</body>
+<script>
+    const insert = document.querySelector('#insert')
+    window.addEventListener('keydown',(e) =>{
+        insert.innerHTML =`
+        <table>
+            <tr>
+                <th>Key</th>
+                <th>Key Code</th>
+                <th>Code</th>
+            </tr>
+            <tr>
+                <td>${e.key === " " ? "Space":e.key}</td>
+                <td>${e.keyCode}</td>
+                <td>${e.code}</td>
+            </tr>
+          
+            </table>`
+    })
+
+
+</script>
+</html>
